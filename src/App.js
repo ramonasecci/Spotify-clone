@@ -1,23 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
+import GetSong from './components/GetSong';
+import { useState } from 'react';
+import ShowSongs from './components/ShowSongs';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+
+
 
 function App() {
+  const [genere1, setGenere1] = useState([])
+  const [genere2, setGenere2] = useState([])
+  const [genere3, setGenere3] = useState([])
+
+  const getDifGenere1 = (gen) => {
+    setGenere1(gen)
+  }
+  const getDifGenere2 = (gen) => {
+    setGenere2(gen)
+  }
+  const getDifGenere3 = (gen) => {
+    setGenere3(gen)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Row>
+        <Col xs={3}>
+          <GetSong getDifGenere={getDifGenere1} genere="rock" />
+        </Col>    
+        <Col xs={3}>
+          <GetSong getDifGenere={getDifGenere2} genere="punk" />
+        </Col>
+        <Col xs={3}>
+          <GetSong getDifGenere={getDifGenere3} genere="classic" />
+        </Col>
+      </Row>
     </div>
   );
 }
