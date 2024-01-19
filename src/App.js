@@ -16,7 +16,7 @@ const App = () => (
   <>
   <BrowserRouter>
     <Container className="mx-0">
-      <Row>
+      <Row className="margin-custom">
       
         <Col xs={2}>
            <MySidebar/> 
