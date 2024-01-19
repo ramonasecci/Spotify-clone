@@ -9,6 +9,8 @@ import SearchPage from "./components/SearchPage";
 import MediaPlayer from "./components/MediaPlayer";
 import MySidebar from "./components/MySidebar";
 import MyLibrary from "./components/MyLibrary";
+import Notfound from "./components/Notfound";
+
 
 
 
@@ -29,6 +31,7 @@ const App = () => (
             <Route path="/album/:id" element={<AlbumPage/>}/>
             <Route path="/search/:query" element={<SearchPage/>}/>
             <Route path="/mylibrary" element={<MyLibrary/>} />
+            <Route path="*" element={<Notfound />} />
           </Routes>
           
         </Col>  
