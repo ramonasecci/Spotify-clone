@@ -1,42 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
-import GetSong from './components/GetSong';
-import { useState } from 'react';
-import ShowSongs from './components/ShowSongs';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Col, Container , Row} from "react-bootstrap";
+import MainPage from "./components/MainPage";
+import ArtistPage from "./components/ArtistPage";
+import AlbumPage from "./components/AlbumPage";
+import SearchPage from "./components/SearchPage";
+import MediaPlayer from "./components/MediaPlayer";
+import MySidebar from "./components/MySidebar";
+import MyLibrary from "./components/MyLibrary";
 
 
 
-function App() {
-  const [genere1, setGenere1] = useState([])
-  const [genere2, setGenere2] = useState([])
-  const [genere3, setGenere3] = useState([])
-
-  const getDifGenere1 = (gen) => {
-    setGenere1(gen)
-  }
-  const getDifGenere2 = (gen) => {
-    setGenere2(gen)
-  }
-  const getDifGenere3 = (gen) => {
-    setGenere3(gen)
-  }
-
-  return (
-    <div className="App">
+const App = () => (
+  <>
+  <BrowserRouter>
+    <Container className="mx-0">
       <Row>
-        <Col xs={3}>
-          <GetSong getDifGenere={getDifGenere1} genere="rock" />
-        </Col>    
-        <Col xs={3}>
-          <GetSong getDifGenere={getDifGenere2} genere="punk" />
+      
+        <Col xs={2}>
+           <MySidebar/> 
         </Col>
-        <Col xs={3}>
-          <GetSong getDifGenere={getDifGenere3} genere="classic" />
-        </Col>
+        <Col xs={10}>
+          
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/artist" element={<ArtistPage/>}/>
+            <Route path="/album/:id" element={<AlbumPage/>}/>
+            <Route path="/search/:query" element={<SearchPage/>}/>
+            <Route path="/mylibrary" element={<MyLibrary/>} />
+          </Routes>
+          
+        </Col>  
       </Row>
-    </div>
-  );
-}
+      <MediaPlayer />
+      
+    </Container>
+    </BrowserRouter>
+  </>
+);
 
 export default App;

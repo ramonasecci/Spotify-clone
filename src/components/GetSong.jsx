@@ -1,26 +1,17 @@
-import { useEffect, useState } from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-import { useSelector, useDispatch } from 'react-redux'
-import { getSongsAction } from '../redux/actions'
-import ShowSongs from './ShowSongs'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSongsAction } from '../redux/actions';
+import ShowSongs from './ShowSongs';
 
+const GetSong = ({ genere, showC }) => {
+  const songs = useSelector((state) => state.songs.results[genere] || []);
+  const dispatch = useDispatch();
 
-const GetSong = ({genere}) => {
+  useEffect(() => {
+    dispatch(getSongsAction(genere));
+  }, [dispatch, genere]);
 
-    const songs = useSelector((state) => state.songs.results)
-    const dispatch = useDispatch()
+  return <ShowSongs songs={songs} showC={showC}/>;
+};
 
-
-    useEffect(() => {
-        dispatch(getSongsAction(genere))
-    }, [])
-   
-
-    return (
-        <>
-        <ShowSongs songs={songs}/>
-        </>
-    )
-}
-
-export default GetSong
+export default GetSong;

@@ -1,23 +1,23 @@
-import { GET_SONGS } from '../actions'
+// songsReducer.js
+import { GET_SONGS } from '../actions';
 
 const initialState = {
-  results: [],
-  genere1: [],
-  genere2:[],
-}
+  results: {},
+};
 
 const songsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_SONGS :
+    case GET_SONGS:
       return {
         ...state,
-        results: action.payload,
-        genere1: action.payload,
-        genere2: action.payload,
-      }
+        results: {
+          ...state.results,
+          [action.genere]: action.payload,
+        },
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default songsReducer
+export default songsReducer;
