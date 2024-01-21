@@ -243,6 +243,10 @@ ul {
   font-size: 0.8em;
 }
 
+.custom-font-size-p:hover{
+  cursor: pointer;
+}
+
 .margin-custom{
   margin-bottom: 200px;
 }
